@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :maps
-  resources :players
+  resources :players do
+    resources :matches
+  end
 
   root 'welcome#index'
 end
