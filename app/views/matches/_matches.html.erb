@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Map</th>
+      <th>Kills</th>
+      <th>Assists</th>
+      <th>Deaths</th>
+      <th>KDA</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @player.matches.each do |match| %>
+    <tr>
+      <td><%= match.map.exhibition_name %></td>
+      <td><%= match.kills %></td>
+      <td><%= match.assists %></td>
+      <td><%= match.deaths %></td>
+      <td>
+        <% if match.deaths > 0 %>
+          <%= number_to_percentage (match.kills + match.assists) / match.deaths.to_f, precision: 2 %>
+        <% else %>
+          <%= number_to_percentage match.kills + match.assists, precision: 2 %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to 'Delete Match', player_match_path(@player, match), method: :delete, data: {confirm: 'Are you sure?'} %>
+      </td>
+    </tr>
+  <% end %>
+</table>

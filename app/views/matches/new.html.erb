@@ -1,0 +1,32 @@
+<h1>Add a match result for player <%= @player.name %></h1>
+
+<%= link_to 'Back to player', player_path(@player) %>
+
+<%= form_with model: [@player, @player.matches.build], local: true do |form| %>
+  <p>
+    <%= form.label :kills %>
+    <%= form.number_field :kills, min: 0, value: 0 %>
+  </p>
+
+  <p>
+    <%=  form.label :assists %>
+    <%= form.number_field :assists, min: 0, value: 0 %>
+  </p>
+
+  <p>
+    <%= form.label :deaths %>
+    <%= form.number_field :deaths, min: 0, value: 0 %>
+  </p>
+
+  <p>
+    <%= form.label :map %>
+    <%= form.select :map,
+      options_from_collection_for_select(@maps, :id, :exhibition_name),
+      include_blank: "Select a map"
+    %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-10-04 13:50:55
+  kills: 1
+  assists: MyString
+  integer: MyString
+  deaths: 
+  player: one
+  map: one
+
+two:
+  date: 2017-10-04 13:50:55
+  kills: 1
+  assists: MyString
+  integer: MyString
+  deaths: 
+  player: two
+  map: two

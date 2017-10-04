@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004162540) do
+ActiveRecord::Schema.define(version: 20171004165055) do
 
   create_table "maps", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,18 @@ ActiveRecord::Schema.define(version: 20171004162540) do
     t.integer "map_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "kills"
+    t.integer "assists"
+    t.integer "deaths"
+    t.integer "player_id"
+    t.integer "map_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["map_id"], name: "index_matches_on_map_id"
+    t.index ["player_id"], name: "index_matches_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|

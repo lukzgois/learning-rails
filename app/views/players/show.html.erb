@@ -1,8 +1,18 @@
 <h1><%= @player.name %></h1>
 
 <%= link_to 'Back', players_path %> |
-<%= link_to 'Edit', edit_player_path(@player) %>
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Add a match result', new_player_match_path(@player) %>
 
 <p>
   <strong>Age:</strong> <%= @player.age %>
 </p>
+
+<hr>
+<h2>Matches</h2>
+
+<% if @player.matches.count > 0 %>
+  <%= render 'matches/matches' %>
+<% else %>
+  No matches for this player
+<% end %>
