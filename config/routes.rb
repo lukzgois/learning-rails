@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :maps
+  resources :players
 
   root 'welcome#index'
 end

@@ -1,0 +1,8 @@
+<h1><%= @player.name %></h1>
+
+<%= link_to 'Back', players_path %> |
+<%= link_to 'Edit', edit_player_path(@player) %>
+
+<p>
+  <strong>Age:</strong> <%= @player.age %>
+</p>
