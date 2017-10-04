@@ -1,0 +1,34 @@
+<%= form_with model: @map, local: true do |form| %>
+  <% if @map.errors.any? %>
+  <div>
+    <h3>
+      <%= pluralize(@map.errors.count, 'error') %> prohibited this map from being saved:
+    </h3>
+
+    <ul>
+    <% @map.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %> <br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :exhibition_name %> <br>
+    <%= form.text_field :exhibition_name %>
+  </p>
+
+  <p>
+    <%= form.label :map_type %> <br>
+    <%= form.select(:map_type, options_for_select([['Bomb Defusal', 1], ['Hostage Rescue', 2]])) %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
