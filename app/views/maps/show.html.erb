@@ -1,19 +1,36 @@
-<h1></h1>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <div class="container">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><%= link_to 'Maps', maps_path %></li>
+      <li class="is-active"><a href="#" aria-current="page"><%= @map.exhibition_name %></a></li>
+    </ul>
+  </div>
+</nav>
 
-<%= link_to 'Edit', edit_map_path(@map) %> |
-<%= link_to 'Back', maps_path %>
+<div class="container">
+  <div class="is-flex" style="align-items: center">
+    <h1 class="is-size-2 has-text-weight-light">
+      <%= @map.exhibition_name %>
+    </h1>
+    &nbsp;&nbsp;
+    <%= link_to 'Edit', edit_map_path(@map), class: 'button' %>
+  </div>
 
-<p>
-  <strong>Map Name: </strong>
-  <%= @map.name %>
-</p>
+  <table class="table">
+    <tr>
+      <th>Map Name</th>
+      <td><%= @map.name %></td>
+    </tr>
 
-<p>
-  <strong>Exhibition Name: </strong>
-  <%= @map.exhibition_name %>
-</p>
+    <tr>
+      <th>Exhibition Name</th>
+      <td><%= @map.exhibition_name %></td>
+    </tr>
 
-<p>
-  <strong>Map Type: </strong>
-  <%= @map.map_type %>
-</p>
+    <tr>
+      <th>Map Type</th>
+      <td><%= @map.map_type %></td>
+    </tr>
+  </table>
+</div>

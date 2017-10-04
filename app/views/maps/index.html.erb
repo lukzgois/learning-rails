@@ -1,28 +1,42 @@
-<h1>Maps</h1>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <div class="container">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li class="is-active"><a href="#" aria-current="page">Maps</a></li>
+    </ul>
+  </div>
+</nav>
 
-<%= link_to 'New Map', new_map_path %>
+<div class="container">
+  <div class="is-flex" style="align-items: center; justify-content: space-between">
+      <h1 class="is-size-2 has-text-weight-light" >Maps</h1>
+      <%= link_to 'Add a new map', new_map_path, class: 'button is-pulled-right' %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Exhibition Name</th>
-      <th>Map Type</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @maps.each do |map| %>
-    <tr>
-      <td><%= map.name %></td>
-      <td><%= map.exhibition_name %></td>
-      <td><%= map.map_type %></td>
-      <td>
-        <%= link_to 'Show', map_path(map) %> |
-        <%= link_to 'Edit', edit_map_path(map) %> |
-        <%= link_to 'Destroy', map_path(map), method: :delete, data: {confirm: 'Are you sure?'} %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <br>
+
+  <table class="table is-fullwidth">
+    <thead class="is-primary">
+      <tr>
+        <th>Name</th>
+        <th>Exhibition Name</th>
+        <th>Map Type</th>
+        <th class="has-text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @maps.each do |map| %>
+      <tr>
+        <td><%= map.name %></td>
+        <td><%= map.exhibition_name %></td>
+        <td><%= map.map_type %></td>
+        <td class="has-text-right">
+          <%= link_to 'Show', map_path(map) %> |
+          <%= link_to 'Edit', edit_map_path(map) %> |
+          <%= link_to 'Destroy', map_path(map), method: :delete, data: {confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

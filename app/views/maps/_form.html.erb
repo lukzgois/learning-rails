@@ -1,34 +1,37 @@
 <%= form_with model: @map, local: true do |form| %>
-  <% if @map.errors.any? %>
-  <div>
-    <h3>
-      <%= pluralize(@map.errors.count, 'error') %> prohibited this map from being saved:
-    </h3>
-
-    <ul>
-    <% @map.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+  <div class="field">
+    <%= form.label :name, 'Name', class: 'label' %>
+    <div class="control"><%= form.text_field :name, class: 'input' %></div>
+    <% if @map.errors[:name] %>
+      <p class="help is-danger"><%=@map.errors[:name].first %></p>
     <% end %>
-    </ul>
   </div>
-  <% end %>
 
-  <p>
-    <%= form.label :name %> <br>
-    <%= form.text_field :name %>
-  </p>
+  <div class="field">
+    <%= form.label :exhibition_name, 'Exhibition Name', class: 'label' %>
+    <div class="control">
+      <%= form.text_field :exhibition_name, class: 'input' %>
+    </div>
+    <% if @map.errors[:exhibition_name] %>
+      <p class="help is-danger"><%=@map.errors[:exhibition_name].first %></p>
+    <% end %>
+  </div>
 
-  <p>
-    <%= form.label :exhibition_name %> <br>
-    <%= form.text_field :exhibition_name %>
-  </p>
+  <div class="field">
+    <%= form.label :map_type, 'Map type', class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= form.select(:map_type, options_for_select([['Bomb Defusal', 1], ['Hostage Rescue', 2]])) %>
+      </div>
+    </div>
+    <% if @map.errors[:map_type] %>
+      <p class="help is-danger"><%=@map.errors[:map_type].first %></p>
+    <% end %>
+  </div>
 
-  <p>
-    <%= form.label :map_type %> <br>
-    <%= form.select(:map_type, options_for_select([['Bomb Defusal', 1], ['Hostage Rescue', 2]])) %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="field">
+    <div class="control">
+      <%= form.submit nil, class: 'button is-primary' %>
+    </div>
+  </div>
 <% end %>
